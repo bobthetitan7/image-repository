@@ -5,19 +5,13 @@ import UploadForm from './comps/Upload';
 import ImageGrid from './comps/images';
 import Modal from './comps/Modal';
 import Mainpage from './comps/Mainpage';
+import UploadPrompt from './comps/UploadPrompt';
 
 function App() {
 
   const [selectedImage, setSelectedImage] = useState(null);
   const [uid, setUid] = useState(null);
-  // let uid = null;
-
-  // if (localStorage.hasOwnProperty("clientId") && localStorage.getItem("clientId") != null) {
-  //   uid = localStorage.getItem("clientId");
-  // } else {
-  //   uid = uuidv4();
-  //   localStorage.setItem("clientId", uid = uuidv4())
-  // }
+  const [upload, setUpload] = useState(null);
 
   if (localStorage.hasOwnProperty("clientId")) {
     if(uid !== localStorage.getItem("clientId")) {
@@ -34,8 +28,9 @@ function App() {
     <div className="App">
       <Title/>
       <Mainpage/>
-      <UploadForm uid={uid}/>
+      <UploadForm uid={uid} setUpload={setUpload}/>
       <ImageGrid uid={uid} setSelectedImage={setSelectedImage}/>
+      {upload && <UploadPrompt uid={uid} setUpload={setUpload}/>}
       {selectedImage && <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage}/>}
     </div>
   );

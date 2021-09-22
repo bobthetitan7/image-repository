@@ -3,7 +3,7 @@ import Storage from "../hooks/Storage";
 import {motion} from "framer-motion";
 import './style/progressbar.css'
 
-const ProgressBar = ({uid, file, setFile}) => {
+const ProgressBar = ({uid, file, setFile, setUpload}) => {
 
     const {url, progress} = Storage(uid, file);
     
@@ -12,6 +12,10 @@ const ProgressBar = ({uid, file, setFile}) => {
             setFile(null);
         }
     }, [url, setFile])
+
+    if(progress === 100) {
+        setUpload(null)
+    }
 
     return(
         <motion.div className="progress-bar"

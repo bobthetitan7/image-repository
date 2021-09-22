@@ -1,0 +1,8 @@
+.uploadForm {
+    width: 60%;
+    position: relative;
+    top: 30%;
+    left: 20%;
+    background-color: white;
+    z-index: 1000;
+}
